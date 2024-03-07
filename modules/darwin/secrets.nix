@@ -1,8 +1,13 @@
-{ config, pkgs, agenix, secrets, ... }:
-
-let user = "sandipndev"; in
 {
-  age.identityPaths = [ 
+  config,
+  pkgs,
+  agenix,
+  secrets,
+  ...
+}: let
+  user = "sandipndev";
+in {
+  age.identityPaths = [
     "/Users/${user}/.ssh/id_ed25519"
   ];
 
@@ -19,7 +24,7 @@ let user = "sandipndev"; in
   age.secrets."ssh-key" = {
     symlink = true;
     path = "/Users/${user}/.ssh/id_rsa";
-    file =  "${secrets}/ssh-key.age";
+    file = "${secrets}/ssh-key.age";
     mode = "600";
     owner = "${user}";
     group = "staff";

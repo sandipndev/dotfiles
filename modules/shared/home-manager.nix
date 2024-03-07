@@ -1,9 +1,13 @@
-{ config, pkgs, lib, ... }:
-
-let name = "sandipndev";
-    user = "sandipndev";
-    email = "hey@sandipan.dev"; in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  name = "sandipndev";
+  user = "sandipndev";
+  email = "hey@sandipan.dev";
+in {
   direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -14,21 +18,21 @@ let name = "sandipndev";
   zsh = {
     enable = true;
     autocd = false;
-    cdpath = [ "~/.local/share/src" ];
+    cdpath = ["~/.local/share/src"];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "kubectl" "terraform" ];
+      plugins = ["git" "kubectl" "terraform"];
     };
     plugins = [
       {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./config;
-          file = "p10k.zsh";
+        name = "powerlevel10k-config";
+        src = lib.cleanSource ./config;
+        file = "p10k.zsh";
       }
     ];
     initExtraFirst = ''
@@ -53,7 +57,7 @@ let name = "sandipndev";
           nix-shell '<nixpkgs>' -A "$1"
       }
     '';
-    
+
     shellAliases = {
       ls = "ls --color=auto";
       ll = "ls -al --color=auto";
@@ -74,7 +78,7 @@ let name = "sandipndev";
 
   git = {
     enable = true;
-    ignores = [ "*.swp" ];
+    ignores = ["*.swp"];
     userName = name;
     userEmail = email;
     lfs = {
@@ -82,8 +86,8 @@ let name = "sandipndev";
     };
     extraConfig = {
       init.defaultBranch = "main";
-      core = { 
-	    editor = "vim";
+      core = {
+        editor = "vim";
         autocrlf = "input";
       };
       commit.gpgsign = true;
@@ -103,8 +107,8 @@ let name = "sandipndev";
 
   vim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes vim-startify vim-tmux-navigator ];
-    settings = { ignorecase = true; };
+    plugins = with pkgs.vimPlugins; [vim-airline vim-airline-themes vim-startify vim-tmux-navigator];
+    settings = {ignorecase = true;};
     extraConfig = ''
       "" General
       set number
@@ -208,8 +212,8 @@ let name = "sandipndev";
 
       let g:airline_theme='bubblegum'
       let g:airline_powerline_fonts = 1
-      '';
-     };
+    '';
+  };
 
   neovim = import ./neovim/default.nix {pkgs = pkgs;};
 
@@ -297,10 +301,10 @@ let name = "sandipndev";
         '')
       ''
 
-      Host uncrasher
-        User sandipndev
-        Hostname git.sandipan.dev
-        Port 2022
+        Host uncrasher
+          User sandipndev
+          Hostname git.sandipan.dev
+          Port 2022
       ''
     ];
   };
@@ -314,6 +318,6 @@ let name = "sandipndev";
     extraConfig = ''
       set -g focus-events on
       set -g mouse on
-      '';
-    };
+    '';
+  };
 }

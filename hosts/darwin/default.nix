@@ -1,15 +1,17 @@
-{ agenix, config, pkgs, ... }:
-
-let user = "sandipndev"; in
-
 {
-
+  agenix,
+  config,
+  pkgs,
+  ...
+}: let
+  user = "sandipndev";
+in {
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
     ../../modules/shared/cachix
-     agenix.darwinModules.default
+    agenix.darwinModules.default
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -18,12 +20,16 @@ let user = "sandipndev"; in
   # Setup user, packages, programs
   nix = {
     package = pkgs.nixUnstable;
-    settings.trusted-users = [ "@admin" "${user}" ];
+    settings.trusted-users = ["@admin" "${user}"];
 
     gc = {
       user = "root";
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 
@@ -39,9 +45,11 @@ let user = "sandipndev"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [
-    agenix.packages."${pkgs.system}".default
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = with pkgs;
+    [
+      agenix.packages."${pkgs.system}".default
+    ]
+    ++ (import ../../modules/shared/packages.nix {inherit pkgs;});
 
   # Enable fonts dir
   fonts = {

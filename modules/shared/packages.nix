@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 with pkgs; [
   # General packages for development and system management
   alacritty
@@ -39,6 +38,7 @@ with pkgs; [
 
   # Node.js development tools
   nodePackages.npm # globally install npm
+  nodePackages.yarn # globally install npm
   nodePackages.prettier
   nodejs
 
