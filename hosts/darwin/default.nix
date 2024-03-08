@@ -66,6 +66,7 @@ in {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
 
         # 120, 90, 60, 30, 12, 6, 2
         KeyRepeat = 2;
