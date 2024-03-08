@@ -8,6 +8,7 @@ _: [
   "discord"
   "mattermost"
   "zoom"
+  "homebrew/cask/keybase"
 
   # Utility Tools
   "syncthing"
