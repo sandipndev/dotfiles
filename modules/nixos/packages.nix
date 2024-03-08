@@ -1,68 +1,70 @@
-{ pkgs }:
+{pkgs}:
+with pkgs; let
+  shared-packages = import ../shared/packages.nix {inherit pkgs;};
+in
+  shared-packages
+  ++ [
+    # Security and authentication
+    yubikey-agent
+    keepassxc
 
-with pkgs;
-let shared-packages = import ../shared/packages.nix { inherit pkgs; }; in
-shared-packages ++ [
+    # App and package management
+    appimage-run
+    gnumake
+    cmake
+    home-manager
 
-  # Security and authentication
-  yubikey-agent
-  keepassxc
+    # Media and design tools
+    vlc
+    fontconfig
+    font-manager
 
-  # App and package management
-  appimage-run
-  gnumake
-  cmake
-  home-manager
+    # Productivity tools
+    bc # old school calculator
+    galculator
 
-  # Media and design tools
-  vlc
-  fontconfig
-  font-manager
+    # Audio tools
+    cava # Terminal audio visualizer
+    pavucontrol # Pulse audio controls
 
-  # Productivity tools
-  bc # old school calculator
-  galculator
+    # Testing and development tools
+    direnv
+    rofi
+    rofi-calc
+    rnix-lsp # lsp-mode for nix
+    postgresql
 
-  # Audio tools
-  cava # Terminal audio visualizer
-  pavucontrol # Pulse audio controls
+    # Screenshot and recording tools
+    flameshot
 
-  # Testing and development tools
-  direnv
-  rofi
-  rofi-calc
-  rnix-lsp # lsp-mode for nix
-  postgresql
+    # Text and terminal utilities
+    feh # Manage wallpapers
+    screenkey
+    tree
+    unixtools.ifconfig
+    unixtools.netstat
+    xclip
+    xorg.xwininfo # Provides a cursor to click and learn about windows
+    xorg.xrandr
 
-  # Screenshot and recording tools
-  flameshot
+    # File and system utilities
+    inotify-tools # inotifywait, inotifywatch - For file system events
+    i3lock-fancy-rapid
+    libnotify
+    pcmanfm # File browser
+    sqlite
+    xdg-utils
 
-  # Text and terminal utilities
-  feh # Manage wallpapers
-  screenkey
-  tree
-  unixtools.ifconfig
-  unixtools.netstat
-  xclip
-  xorg.xwininfo # Provides a cursor to click and learn about windows
-  xorg.xrandr
+    # Other utilities
+    yad # yad-calendar is used with polybar
+    xdotool
+    google-chrome
 
-  # File and system utilities
-  inotify-tools # inotifywait, inotifywatch - For file system events
-  i3lock-fancy-rapid
-  libnotify
-  pcmanfm # File browser
-  sqlite
-  xdg-utils
+    # PDF viewer
+    zathura
 
-  # Other utilities
-  yad # yad-calendar is used with polybar
-  xdotool
-  google-chrome
+    # Music and entertainment
+    spotify
 
-  # PDF viewer
-  zathura
-
-  # Music and entertainment
-  spotify
-]
+    pkgs.fly91
+  ]

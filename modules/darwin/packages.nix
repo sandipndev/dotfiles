@@ -7,4 +7,5 @@ in
     pkgs.alejandra
     pkgs.tree
     pkgs.jq
+    pkgs.fly91
   ]

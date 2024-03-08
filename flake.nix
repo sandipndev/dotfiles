@@ -49,6 +49,11 @@
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
     forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+    nixWithOverlays = {
+      nixpkgs.overlays = [
+        (import ./overlays/fly-versions.nix)
+      ];
+    };
     devShell = system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
@@ -97,6 +102,7 @@
           inherit system;
           specialArgs = inputs;
           modules = [
+            nixWithOverlays
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -124,6 +130,7 @@
         inherit system;
         specialArgs = inputs;
         modules = [
+          nixWithOverlays
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           {
