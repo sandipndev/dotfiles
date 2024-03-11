@@ -94,6 +94,7 @@ in {
       pull.rebase = true;
       rebase.autoStash = true;
       user.signingKey = "DE3561F81B89A469";
+      rerere.enabled = true;
     };
   };
 
