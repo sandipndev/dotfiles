@@ -10,6 +10,10 @@
     "wix/brew"
   ];
 
+  brews = [
+    "applesimutils"
+  ];
+
   casks = [
     "iterm2"
     "keybase"
@@ -20,6 +24,5 @@
     "mattermost"
     "zoom"
     "google-chrome"
-    "applesimutils"
   ];
 }
