@@ -6,13 +6,8 @@
     upgrade = true;
   };
 
-  brews = [
-    "applesimutils"
-    "docker"
-    "discord"
-    "mattermost"
-    "zoom"
-    "google-chrome"
+  taps = [
+    "wix/brew"
   ];
 
   casks = [
@@ -20,9 +15,11 @@
     "keybase"
     "react-native-debugger"
     "visual-studio-code"
-  ];
-
-  taps = [
-    "wix/brew"
+    "docker"
+    "discord"
+    "mattermost"
+    "zoom"
+    "google-chrome"
+    "applesimutils"
   ];
 }
