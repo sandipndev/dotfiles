@@ -25,5 +25,6 @@
     "zoom"
     "google-chrome"
     "telegram"
+    "whatsapp"
   ];
 }
