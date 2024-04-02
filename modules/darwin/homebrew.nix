@@ -24,5 +24,6 @@
     "mattermost"
     "zoom"
     "google-chrome"
+    "telegram"
   ];
 }
