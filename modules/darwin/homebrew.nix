@@ -26,5 +26,6 @@
     "google-chrome"
     "telegram"
     "whatsapp"
+    "spotify"
   ];
 }
