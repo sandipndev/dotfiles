@@ -28,5 +28,6 @@
     "whatsapp"
     "spotify"
     "notion"
+    "discord"
   ];
 }
