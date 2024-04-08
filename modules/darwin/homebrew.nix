@@ -27,5 +27,6 @@
     "telegram"
     "whatsapp"
     "spotify"
+    "notion"
   ];
 }
