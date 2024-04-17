@@ -29,5 +29,6 @@
     "spotify"
     "notion"
     "discord"
+    "bitwarden"
   ];
 }
