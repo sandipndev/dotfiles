@@ -61,4 +61,5 @@ with pkgs; [
 
   ytt
   vendir
+  silver-searcher
 ]

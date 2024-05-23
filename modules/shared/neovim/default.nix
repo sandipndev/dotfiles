@@ -84,6 +84,7 @@
         let g:jellybeans_overrides = { 'Special': { 'guifg': 'de5577' }, }
       ";
     }
+    mason-nvim
   ];
   extraConfig = builtins.readFile ./extra.vim;
 }

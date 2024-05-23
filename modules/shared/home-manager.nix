@@ -58,6 +58,8 @@ in {
       }
 
       eval "$(/opt/homebrew/bin/brew shellenv)"
+
+      ulimit -Sn 1024
     '';
 
     shellAliases = {
@@ -308,6 +310,11 @@ in {
           User sandipndev
           Hostname git.sandipan.dev
           Port 2022
+
+        Host roadside
+          User sandipndev
+          Hostname git.sandipan.dev
+          Port 2122
       ''
     ];
   };
